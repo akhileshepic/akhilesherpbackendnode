@@ -1,4 +1,4 @@
-const { createRole: createRoleService } = require("./roleService");
+const { createRole: createRoleService,getAllRoles:getAllRolesService } = require("./roleService");
 
 const createRole = async (req, res) => {
   try {
@@ -16,6 +16,16 @@ const createRole = async (req, res) => {
   }
 };
 
+const getAllRoles = async (req, res) =>{
+  try {
+    const roles = await getAllRolesService();
+    res.status(200).json({ data: roles });
+  } catch (error) {
+    res.status(500).json({ message: error.message || "Internal Server Error" });
+  }
+}
+
 module.exports = {
   createRole,
+  getAllRoles
 };
