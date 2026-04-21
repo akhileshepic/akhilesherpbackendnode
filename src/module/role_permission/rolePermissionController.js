@@ -1,7 +1,7 @@
 const {
   createOrUpdateRolePermission: createOrUpdateRolePermissionService,
     getAllRolePermissions: getAllRolePermissionsService,
-  // getRolePermissionsByRole: getRolePermissionsByRoleService,
+  getRolePermissionsByRole: getRolePermissionsByRoleService,
   // deleteRolePermission: deleteRolePermissionService,
 } = require("./rolePermissionService");
 

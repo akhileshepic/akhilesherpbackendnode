@@ -94,8 +94,14 @@ const getAllRolePermissions = async () => {
   return await RolePermission.find().populate('role').populate('module');
 }
 
-const getRolePermissionsByRole = async (data) => {
-
+const getRolePermissionsByRole = async (roleId) => {
+  if(!roleId){
+    throw new Error("Role id is required");
+  }
+  if(!mongoose.Types.ObjectId.isValid(roleId)){
+     throw new Error("Invalid role id");
+  } 
+  return await RolePermission.find({ role: roleId }).populate('module')
 }
 module.exports = {
   createOrUpdateRolePermission,
