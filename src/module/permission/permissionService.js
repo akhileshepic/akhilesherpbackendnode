@@ -24,7 +24,9 @@ const createPermission = async (data) => {
   return { permission, isUpdated: false };
 };
 
-const getAllPermissions = async () => {};
+const getAllPermissions = async () => {
+  return await Permission.find().populate("module");
+};
 
 module.exports = {
   createPermission,

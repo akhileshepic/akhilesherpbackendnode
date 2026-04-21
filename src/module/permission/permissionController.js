@@ -1,4 +1,7 @@
-const {createPermission:createServicePermission} =require('./permissionService');
+const {
+  createPermission: createServicePermission,
+  getAllPermissions: getAllPermissionsService,
+} = require("./permissionService");
 
 const createPermission = async (req, res) => {
     try {
@@ -16,7 +19,14 @@ const createPermission = async (req, res) => {
     }
 }
 
-const getAllPermissions = async (req, res) => {}
+const getAllPermissions = async (req, res) => {
+    try {
+        const permissions = await getAllPermissionsService();
+        res.status(200).json({ data: permissions });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
 
 
 module.exports = {

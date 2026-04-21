@@ -9,6 +9,7 @@ const userRoute = require("./src/module/user/userRoute");
 const roleRoute = require("./src/module/role/roleRoute");
 const moduleRoute = require("./src/module/Module/moduleRoute");
 const permissionRoute = require("./src/module/permission/permissionRoute");
+const rolePermissionRoute = require("./src/module/role_permission/rolePermissionRoute");
 dbConnect();
 
 
@@ -27,6 +28,7 @@ app.use("/api/user", userRoute);
 app.use("/api/role", roleRoute);
 app.use("/api/module", moduleRoute);
 app.use("/api/permission", permissionRoute);
+app.use("/api/role-permission", rolePermissionRoute);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
