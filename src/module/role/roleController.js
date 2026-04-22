@@ -3,8 +3,7 @@ const { createRole: createRoleService,getAllRoles:getAllRolesService } = require
 const createRole = async (req, res) => {
   try {
     const { name } = req.body || {};
-    console.log("Received role creation request with name:", req.body);
-    if (!name) {
+     if (!name) {
       return res.status(400).json({ message: "Role name is required" });
     }
     const newRole = await createRoleService({ name });

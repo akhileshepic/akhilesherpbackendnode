@@ -10,6 +10,9 @@ const roleRoute = require("./src/module/role/roleRoute");
 const moduleRoute = require("./src/module/Module/moduleRoute");
 const permissionRoute = require("./src/module/permission/permissionRoute");
 const rolePermissionRoute = require("./src/module/role_permission/rolePermissionRoute");
+const departmentRoute = require("./src/module/department/departmentRoute")
+const staffRoute = require("./src/module/staff/staffRoute");
+
 dbConnect();
 
 
@@ -29,6 +32,8 @@ app.use("/api/role", roleRoute);
 app.use("/api/module", moduleRoute);
 app.use("/api/permission", permissionRoute);
 app.use("/api/role-permission", rolePermissionRoute);
+app.use("/api/staff",staffRoute);
+app.use("/api/department",departmentRoute);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
