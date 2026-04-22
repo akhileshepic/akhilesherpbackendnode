@@ -6,10 +6,11 @@ const createPermission = async (data) => {
   }
 
   const existingPermission = await Permission.findOne({
-    module: data.module,
-  });
-
+  module: data.module,
+  name: data.name
+});
   if (existingPermission) {
+    existingPermission.name = data.name ?? existingPermission.name;
     existingPermission.canview = data.canview ?? existingPermission.canview;
     existingPermission.canadd = data.canadd ?? existingPermission.canadd;
     existingPermission.canedit = data.canedit ?? existingPermission.canedit;

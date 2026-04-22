@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const permissionSchema = new mongoose.Schema(
   {
+    name:{
+      type:String,
+      required:true,
+    },
     module: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Module",

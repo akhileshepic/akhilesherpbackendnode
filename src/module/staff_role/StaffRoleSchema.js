@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const StaffRouteSchema = new mongoose.Schema({
+const StaffRoleSchema = new mongoose.Schema({
   role: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Role",
@@ -13,4 +13,4 @@ const StaffRouteSchema = new mongoose.Schema({
   },
 },{timestamps:true});
 
-module.exports=mongoose.model('StaffRoute',StaffRouteSchema)
+module.exports=mongoose.model('StaffRole',StaffRoleSchema)
