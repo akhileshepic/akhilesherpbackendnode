@@ -21,23 +21,23 @@ const Module = require("../Module/moduleSchema");
 //   return await RolePermission.find({ role: roleId }).populate("module");
 // };
 
-// const deleteRolePermission = async (id) => {
-//   if (!id) {
-//     throw new Error("Role permission id is required");
-//   }
+const deleteRolePermission = async (id) => {
+  if (!id) {
+    throw new Error("Role permission id is required");
+  }
 
-//   if (!mongoose.Types.ObjectId.isValid(id)) {
-//     throw new Error("Invalid role permission id");
-//   }
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    throw new Error("Invalid role permission id");
+  }
 
-//   const deletedRolePermission = await RolePermission.findByIdAndDelete(id);
+  const deletedRolePermission = await RolePermission.findByIdAndDelete(id);
 
-//   if (!deletedRolePermission) {
-//     throw new Error("Role permission not found");
-//   }
+  if (!deletedRolePermission) {
+    throw new Error("Role permission not found");
+  }
 
-//   return deletedRolePermission;
-// };
+  return deletedRolePermission;
+};
 
 const createOrUpdateRolePermission = async (data) => {
   const roleID = data?.role || data?.roleId;
@@ -107,5 +107,5 @@ module.exports = {
   createOrUpdateRolePermission,
   getAllRolePermissions,
   getRolePermissionsByRole,
-  // deleteRolePermission,
+    deleteRolePermission,
 };
