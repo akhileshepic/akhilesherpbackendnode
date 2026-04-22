@@ -8,10 +8,7 @@ const createDepartment = async (data) => {
   if (existingdepartment) {
     throw new Error("Department with this name already exists");
   }
-  const newDepartment = new departmentModel({
-    name: data.name,
-  });
-
+const newDepartment = new departmentModel({name: data.name});
   return await newDepartment.save();
 };
 

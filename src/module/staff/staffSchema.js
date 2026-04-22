@@ -8,15 +8,15 @@ const staffSchema = new mongoose.Schema(
     },
     surname: {
       type: String,
-      required: true,
+     
     },
     father_name: {
       type: String,
-      required: true,
+     
     },
     mother_name: {
       type: String,
-      required: true,
+    
     },
     contact_no: {
       type: String,
@@ -24,7 +24,7 @@ const staffSchema = new mongoose.Schema(
     },
     emergency_contact_no: {
       type: String,
-      required: true,
+      
     },
     dob: {
       type: Date,
@@ -32,7 +32,7 @@ const staffSchema = new mongoose.Schema(
     },
     employee_id: {
       type: String,
-      require: true,
+      required: true,
       unique: true,
     },
     department: {
@@ -50,8 +50,7 @@ const staffSchema = new mongoose.Schema(
     },
     qualification: {
       type: String,
-      required: true,
-      unique: true,
+      
     },
     work_exp: {
       type: String,

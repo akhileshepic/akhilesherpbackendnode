@@ -1,14 +1,46 @@
 const staffModel = require("./staffSchema");
+const { createandUpdateStaffRole } = require("../staff_role/StaffRoleService");
+const createStaff = async (data) => {
+  const existingStaff = await staffModel.findOne({ email: data.email });
+  if (existingStaff) {
+    throw new Error("Staff with this email already exists");
+  }
+  if (!data.employee_id) {
+    data.employee_id = await generateEmployeeId();
+  }
+  const {role_id,...staffdata} = data;
+  const newStaffd = new staffModel(staffdata);
 
-const createStaff = async ({ name, email, password, role }) => {
-    const existingStaff = await staffModel.findOne({ email });
-    if (existingStaff) {
-        throw new Error("Staff with this email already exists");
-    }       
-    const newStaff = new staffModel({ name,name,surname,father_name,mother_name,contact_no,emergency_contact_no,dob,department,designation,qualification,work_exp,marital_status,date_of_joining,date_of_leaving,local_address,permanent_address,note,gender,account_title,bank_account_no,bank_name,ifsc_code,bank_branch,payscale,basic_salary,epf_no,email, password });
-    return await newStaff.save();
+  const newStaff = await newStaffd.save();
+   console.log(newStaff,'newStaff');
+  // ✅ Role assign after save
+  if (data.role_id) {
+    await createandUpdateStaffRole({
+      staffId: newStaff._id,
+      roleId: role_id, 
+    });
+  }
+
+  return newStaff;
+};
+const generateEmployeeId = async () => {
+  // 🔍 Last staff find karo
+  const lastStaff = await staffModel
+    .findOne({})
+    .sort({ createdAt: -1 })
+    .select("employee_id");
+  let newEmployeeId = "EMP001";
+  if (lastStaff && lastStaff.employee_id) {
+    const lastNumber = parseInt(lastStaff.employee_id.replace("EMP", ""));
+    console.log(lastNumber, "lastNumber");
+    const nextNumber = lastNumber + 1;
+
+    newEmployeeId = "EMP" + String(nextNumber).padStart(3, "0");
+  }
+
+  return newEmployeeId;
 };
 
 module.exports = {
-    createStaff,
+  createStaff,
 };
