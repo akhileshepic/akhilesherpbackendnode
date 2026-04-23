@@ -118,10 +118,8 @@ const getbystaffRole = async (staffId) => {
               _id: 0,
               module: {
                 _id: "$module._id",
-                name: "$module.name",
-                description: "$module.description",
-                createdAt: "$module.createdAt",
-                updatedAt: "$module.updatedAt",
+                name: "$module.name",        
+              
               },
               access: {
                 canview: "$canview",
@@ -136,10 +134,10 @@ const getbystaffRole = async (staffId) => {
                   in: {
                     _id: "$$permission._id",
                     name: "$$permission.name",
-                     canview: "$canview",
-                canadd: "$canadd",
-                canedit: "$canedit",
-                candelete: "$candelete",
+                    canview: "$canview",
+                    canadd: "$canadd",
+                    canedit: "$canedit",
+                    candelete: "$candelete",
                   },
                 },
               },
